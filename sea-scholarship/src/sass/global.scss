@@ -1,0 +1,476 @@
+@import '../sass/base.scss';
+
+body{
+  color: #333;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: 992px) {
+    padding: 0 50px;
+  }
+}
+
+.swiper-container{
+  margin: 0 auto;
+}
+
+.swiper-button-next{
+  &:after{
+    content: url(../assets/images/play-icon.png);
+    transform: scale(0.1);
+  }
+}
+.swiper-button-prev{
+  &:after{
+    content: url(../assets/images/play-icon.png);
+    transform: scale(0.1);
+    transform: scaleX(-0.1) scaleY(-0.1);
+  }
+}
+
+h2{
+  font-size: 34px;
+  color: #2e2ea7;
+  margin-top: 0;
+  font-family: 'avenir-bold';
+
+  @media (max-width:767px) {
+    font-size: 1.5em;
+  }
+}
+
+h3{
+  color: #2e2ea7;
+  margin-top: 0;
+  font-family: 'avenir-bold';
+}
+
+p{
+  text-align: justify;
+  font-family: 'avenir-light';
+  font-size: 18px;
+}
+
+.App {
+  text-align: center;
+}
+.App-header {
+
+  .nav {
+    height: 80px;
+    width: 100%;
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .nav-header {
+      display: inline;
+
+      .nav-logo {
+        max-width: 250px;
+        width: 100%;
+
+        @media (min-width: 992px) {
+          max-width: 400px;
+        }
+      }
+    }
+
+    .nav-btn {
+      display: none;
+    }
+
+    .nav-links {
+      display: inline;
+      float: right;
+      font-size: 18px;
+
+      a {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+        font-size: 20px;
+        font-family: 'avenir-medium';
+      }
+      a:nth-child(even), a:nth-child(3){
+        &::before{
+          content: '|';
+          margin-right: 20px;
+        }
+      }
+    }
+
+    #nav-check {
+      display: none;
+    }
+  }
+  
+  @media (max-width:600px) {
+    .nav { 
+      .nav-logo{
+        max-width: 200px !important;
+      }
+      .nav-btn {
+        display: inline-block;
+
+        label {
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          padding: 13px;
+          cursor: pointer;
+
+          span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #333;
+          }
+        }
+        .nav  #nav-check:checked ~ .nav-btn > label {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      .nav-links {
+        position: absolute;
+        display: block;
+        width: 100%;
+        background-color: #fff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 100px;
+        left: 0px;
+
+        a {
+          display: block;
+          width: 100%;
+          color: #333;
+        }
+        a:nth-child(even), a:nth-child(3){
+          &::before{
+            content: '';
+            margin-right: 0;
+          }
+        }
+      }
+
+      #nav-check:not(:checked) ~ .nav-links {
+        height: 0px;
+      }
+      #nav-check:checked ~ .nav-links {
+        height: auto;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+.header-wrapper{
+  background-image: url('../assets/images/BG-Head.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .container{
+    display: flex;
+  }
+
+  .header-detail{
+    width: 50%;
+    color: #fff;
+    margin: auto;
+    text-align: left;
+
+    h1{
+      font-size: 2.5em;
+    }
+    p{
+      font-family: 'avenir-medium';
+      font-size: 1em;
+    }
+  }
+  .icon-grad{
+    width: 50%;
+    max-width: 450px;
+    margin: auto;
+  }
+  @media (max-width:600px) {
+    .container{
+      flex-direction: column !important;
+    }
+    .header-detail{
+      width: 100%;
+      order: 2 !important;
+      h1{
+        font-size: 1.8em;
+      }
+    }
+    .icon-grad{
+      width: 100%;
+      order: 1 !important;
+      max-width: 250px;
+    }
+  }
+  @media (min-width:601px) and (max-width:991px) {
+    height: 600px;
+  }
+}
+
+.section-program{
+  background-color: #f6f6f6;
+  padding: 100px 0;
+  .list-program{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    
+    &_box{
+      box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      background-color: #fff;
+      margin: 0 20px;
+      padding: 20px;
+      width: 50%;
+      height: 600px;
+
+      .icon-program{
+        max-width: 150px;
+        margin: auto;
+      }
+      @media (max-width:991px) {
+        height: auto;
+      }
+      @media (min-width: 992px) {
+        padding: 40px;
+      }
+    }
+    .program-title{
+      color: #2e2ea7;
+    }
+    .program{
+      text-align: left;
+      li{
+        list-style-type: circle;
+      }
+    }
+    @media (max-width:600px) {
+      flex-direction: column;
+      &_box{
+        width: 80%;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
+
+.section-university-partner{
+  margin: 40px 0;
+  &_content{
+    display: flex;
+    justify-content: center;
+    .logo-univ{
+      max-height: 250px;
+    }
+    .univ-carousel{
+      margin-left: 20px;
+      text-align: left;
+      max-width: 700px;
+      h3{
+        color: #333 !important;
+        font-size: 22px;
+      }
+    }
+
+    .list-of-faculty{
+      list-style-type: circle;
+      text-align: left;
+      padding: 0;      
+      li{
+        margin-left: 20px;
+        width: 20em;
+        float: left;
+      }
+    }
+    @media (min-width:768px) {
+      .logo-univ-wrapper{
+        width: 35%;
+      }
+      .logo-univ{
+        float: right;
+      }
+      .univ-carousel{
+        width: 65%;
+      }
+    }
+  }
+  @media (max-width:767px) {
+    &_content{
+      display: block;
+    }
+    .logo-univ{
+      max-width: 200px;
+    }
+    .logo-univ-wrapper, .univ-carousel{
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.section-timeline{
+  background-color: #f6f6f6;
+  padding: 40px 0;
+
+  &_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .timeline{
+    margin: 0 20px;
+    width: 25%;
+    p{
+      text-align: center;
+    }
+    img{
+      max-width: 200px;
+    }
+    h3{
+      height: 40px;
+    }
+  }
+
+  @media (min-width:601px) and (max-width:991px) {
+    &_content{
+      flex-flow: wrap;
+    }
+  }
+
+  @media (max-width:600px) {
+    &_content{
+      display: block;
+    }
+    .timeline{
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+.section-testimoni{
+  margin: 40px 0;
+
+  &_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .person-img{
+      max-width: 250px;
+    }
+    .testi-detail{
+      text-align: left;
+      margin-left: 30px;
+      max-width: 600px;
+    }
+  }
+  @media (min-width:768px) {
+    .person-img-wrapper{
+      width: 30%;
+    }
+    .person-img{
+      float: right;
+    }
+    .testi-detail{
+      width: 70%;
+    }
+  }
+  @media (max-width: 767px) {
+    &_content{
+     display: block;
+    }
+    .person-img, .testi-detail{
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+.section-apply{
+  margin: 40px 0;
+  background-image: url('../assets/images/BG-Apply.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  h3{
+    color: #fff !important;
+  }
+  @media (max-width:991px) {
+    height: 500px
+  }
+}
+
+.section-faq{
+  margin: 40px 0;
+
+  li{
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .faq-title{
+    font-weight: bold;
+  }
+  &_content{
+    text-align: left;
+  }
+}
+
+.App-footer{
+  background-image: url('../assets/images/BG-Foot.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  p{
+    margin-top: 100px;
+    @media (max-width:600px) {
+      padding: 0 20px;
+    }
+  }
+  a{
+    color: #fff !important;
+  }
+}
